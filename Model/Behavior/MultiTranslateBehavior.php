@@ -42,7 +42,7 @@ class MultiTranslateBehavior extends TranslateBehavior {
      * @param mixed $config
      * @return void
      */
-    public function setup($Model, $config = array()) {
+    public function setup(Model $Model, $config = array()) {
         parent::setup($Model,$config);
         
         if ( !isset( $this->multiOptions[$Model->alias] ) )
@@ -81,7 +81,7 @@ class MultiTranslateBehavior extends TranslateBehavior {
  * @param boolean $primary Did the find originate on $model.
  * @return array Modified results
  */
-	public function afterFind(Model $model, $results, $primary) {
+	public function afterFind(Model $model, $results, $primary = false) {
 		$model->virtualFields = $this->runtime[$model->alias]['virtualFields'];
 		$this->runtime[$model->alias]['virtualFields'] = $this->runtime[$model->alias]['fields'] = array();
 		$locale = $this->_getLocale($model);
@@ -136,7 +136,7 @@ class MultiTranslateBehavior extends TranslateBehavior {
  * @param Model $model Model invalidFields was called on.
  * @return boolean
  */
-	public function beforeValidate(Model $model) {
+	public function beforeValidate(Model $model, $options = array()) {
 		$locale = $this->_getLocale($model);
 		if (empty($locale)) {
 			return true;
