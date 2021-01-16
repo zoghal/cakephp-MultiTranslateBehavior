@@ -3,7 +3,7 @@
 * Author:
   <pre>
     Saleh Souzanchi <http://soozanchi.ir>
-    Lars  https://github.com/func0der
+    @func0der  https://github.com/func0der
   </pre>
 * Version: 1.0.0
 * License: MIT
